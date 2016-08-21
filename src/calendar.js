@@ -1,12 +1,16 @@
 var cx = require('classnames');
 var moment = require('moment');
 var React = require('react');
+
 var range = require('lodash/utility/range');
 var chunk = require('lodash/array/chunk');
 
 var Day = React.createClass({
   displayName: 'Day',
-
+  propTypes: {
+    i:  React.PropTypes.number,
+    w:  React.PropTypes.number,
+  },
   render() {
     var i = this.props.i;
     var w = this.props.w;
