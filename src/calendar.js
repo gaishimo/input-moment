@@ -21,8 +21,7 @@ var Day = React.createClass({
       'next-month': nextMonth,
       'current-day': !prevMonth && !nextMonth && (i === this.props.d)
     });
-
-    return <td className={cn} {... this.props}>{i}</td>;
+    return <td key={"input-moment-td-" + w + "-" + i} className={cn} onClick={this.props.onClick}>{i}</td>;
   }
 });
 
@@ -59,15 +58,15 @@ module.exports = React.createClass({
         <table>
           <thead>
             <tr>
-              {weeks.map((w, i) => <td key={i}>{w}</td>)}
+              {weeks.map((w, i) => <td key={"input-moment-head-" + i}>{w}</td>)}
             </tr>
           </thead>
 
           <tbody>
             {chunk(days, 7).map((row, w) => (
-              <tr key={w}>
+              <tr key={"input-moment-row-" + w}>
                 {row.map((i) => (
-                  <Day key={i} i={i} d={d} w={w}
+                  <Day key={"input-moment-day-" + w + "-" + i} i={i} d={d} w={w}
                     onClick={this.selectDate.bind(null, i, w)}
                   />
                 ))}
